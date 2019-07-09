@@ -14,7 +14,10 @@ import org.springframework.context.annotation.Bean
 @SpringBootApplication
 class GettingStartedApplication {
 
-	val topicExchangeName = "spring-amqp-exchange"
+	companion object {
+		val topicExchangeName = "spring-amqp-exchange"
+	}
+
 	val queueName = "spring-amqp-queue"
 
 	@Bean
