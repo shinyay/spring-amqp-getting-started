@@ -19,21 +19,21 @@ class SimpleReceiver : CommandLineRunner {
     val topicNameHello = "topic-hello"
 
     @Bean
-    fun queue(): Queue = Queue(queueNameHello, false)
+    fun queueForHelloToReceive(): Queue = Queue(queueNameHello, false)
 
     @Bean
-    fun exchange(): TopicExchange = TopicExchange(topicNameHello)
+    fun exchangeForHelloToReceive(): TopicExchange = TopicExchange(topicNameHello)
 
     @Bean
-    fun binding(queue: Queue, topicExchange: TopicExchange) : Binding
-            = BindingBuilder.bind(queue).to(topicExchange).with(queueNameHello)
+    fun bindingForHelloToReceive(queueForHelloToReceive: Queue, exchangeForHelloToReceive: TopicExchange) : Binding
+            = BindingBuilder.bind(queueForHelloToReceive).to(exchangeForHelloToReceive).with(queueNameHello)
 
     @Bean
-    fun listenerAdapter(handler: SimpleHandler): MessageListenerAdapter
+    fun listenerAdapterForHelloToReceive(handler: SimpleHandler): MessageListenerAdapter
             = MessageListenerAdapter(handler, "handleMessage")
 
     @Bean
-    fun container(connectionFactory: ConnectionFactory,
+    fun containerForHelloToReceive(connectionFactory: ConnectionFactory,
                   messageListenerAdapter: MessageListenerAdapter): SimpleMessageListenerContainer {
         val simpleMessageListenerContainer = SimpleMessageListenerContainer()
         simpleMessageListenerContainer.connectionFactory = connectionFactory
