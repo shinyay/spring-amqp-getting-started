@@ -15,7 +15,7 @@ class SimpleSender(val rabbitTemplate: RabbitTemplate) : CommandLineRunner {
     fun queueForHello(): Queue = Queue(queueNameHello, false)
 
     override fun run(vararg args: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        rabbitTemplate.convertAndSend(queueNameHello, ">> Hello, RabbitMQ! from SimpleSender")
     }
 
 
