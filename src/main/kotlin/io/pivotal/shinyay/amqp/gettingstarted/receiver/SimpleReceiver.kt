@@ -6,9 +6,9 @@ import org.springframework.amqp.core.Queue
 import org.springframework.amqp.core.TopicExchange
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Configuration
 
-@Component
+@Configuration
 class SimpleReceiver : CommandLineRunner {
 
     val queueNameHello = "queue-hello"
@@ -23,7 +23,10 @@ class SimpleReceiver : CommandLineRunner {
     @Bean
     fun binding(queue: Queue, topicExchange: TopicExchange) : Binding
             = BindingBuilder.bind(queue).to(topicExchange).with(queueNameHello)
-    
+
+    @Bean
+
+
     override fun run(vararg args: String?) {
     }
 }

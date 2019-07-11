@@ -4,9 +4,9 @@ import org.springframework.amqp.core.Queue
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Configuration
 
-@Component
+@Configuration
 class SimpleSender(val rabbitTemplate: RabbitTemplate) : CommandLineRunner {
 
     val queueNameHello = "queue-hello"
