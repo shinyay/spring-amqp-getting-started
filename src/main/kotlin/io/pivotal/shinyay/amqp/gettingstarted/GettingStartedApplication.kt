@@ -27,10 +27,10 @@ class GettingStartedApplication {
 	fun exchange(): TopicExchange = TopicExchange(topicExchangeName)
 
 	@Bean
-	fun binding(queue: Queue, topicExchange: TopicExchange): Binding
+	fun binding(queue: Queue, exchange: TopicExchange): Binding
 			= BindingBuilder
 					.bind(queue)
-					.to(topicExchange)
+					.to(exchange)
 					.with("foo.bar.#")
 
 	@Bean
