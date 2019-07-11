@@ -12,7 +12,7 @@ class SimpleSender(val rabbitTemplate: RabbitTemplate) : CommandLineRunner {
     val queueNameHello = "queue-hello"
 
     @Bean
-    fun queueForHello(): Queue = Queue(queueNameHello, false)
+    fun queueForHelloToSend(): Queue = Queue(queueNameHello, false)
 
     override fun run(vararg args: String?) {
         rabbitTemplate.convertAndSend(queueNameHello, ">> Hello, RabbitMQ! from SimpleSender")
