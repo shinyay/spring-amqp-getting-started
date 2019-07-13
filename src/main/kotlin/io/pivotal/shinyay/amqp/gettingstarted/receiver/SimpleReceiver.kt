@@ -34,7 +34,7 @@ class SimpleReceiver : CommandLineRunner {
 
     @Bean
     fun containerForHelloToReceive(connectionFactory: ConnectionFactory,
-                  messageListenerAdapter: MessageListenerAdapter): SimpleMessageListenerContainer {
+                                   messageListenerAdapter: MessageListenerAdapter): SimpleMessageListenerContainer {
         val simpleMessageListenerContainer = SimpleMessageListenerContainer()
         simpleMessageListenerContainer.connectionFactory = connectionFactory
         simpleMessageListenerContainer.setQueueNames(queueNameHello)
