@@ -27,5 +27,6 @@ class SimpleSender(val rabbitTemplate: RabbitTemplate) : CommandLineRunner {
     fun sendMessage() {
         val sendTime = Date().toString()
         rabbitTemplate.convertAndSend(queueNameHello, ">> Hello, RabbitMQ! by EnabledScheduling at $sendTime")
+        println("> Sent: $sendTime")
     }
 }
